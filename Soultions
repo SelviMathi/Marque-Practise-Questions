@@ -107,3 +107,50 @@ class FibonacciIterator implements Iterable<Integer> {
         };
     }
 }
+
+*****************************************************
+4.MyClass object creation
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+class Myclass{
+private int x=0;
+public void add(int val){
+x+=val;
+}
+public int getX(){
+return x;
+}
+}
+public class Main{
+public static void main(String args[]){
+Scanner kbd=new Scanner(System.in);
+int n=kbd.nextInt();
+
+Myclass myclass=new Myclass();
+
+int qT[]=new int[n];
+int val[]=new int[n];
+for(int i=0;i<n;i++){
+qT[i]=kbd.nextInt();
+if(qT[i]==1)
+val[i]=kbd.nextInt();
+}
+
+List<Integer> res=new ArrayList<>();
+for(int i=0;i<n;i++){
+
+if(qT[i]==1)
+myclass.add(val[i]);
+else if(qT[i]==2)
+res.add(myclass.getX());
+}
+
+for(int v:res)
+System.out.println(v);
+
+}
+
+}
+
