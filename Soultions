@@ -154,3 +154,46 @@ System.out.println(v);
 
 }
 
+****************************************************************************
+6 Min sum Subsequence(Mountain)
+
+import java.util.*;
+
+public class Main
+{
+public static int getMinSum(int[] a){
+int n=a.length,min=Integer.MAX_VALUE,sum=0;
+int prefix[]=new int[n];
+int suffix[]=new int[n];
+
+prefix[0]=a[0];
+for(int i=1;i<n;i++)
+prefix[i]=Math.min(prefix[i-1],a[i]);
+
+suffix[n-1]=a[n-1];
+for(int i=n-2;i>=0;i--)
+suffix[i]=Math.min(suffix[i+1],a[i]);
+
+for(int i=1;i<n-1;i++){
+int left=prefix[i-1];
+int right=suffix[i+1];
+if(left<a[i] && right<a[i]){
+sum=left+a[i]+right;
+min=Math.min(sum,min);
+}
+}
+return min;
+} 
+    
+public static void main(String[] args){   
+        Scanner sc = new Scanner(System.in);
+	int n=sc.nextInt();
+	int arr[]=new int[n];
+	for(int i=0;i<n;i++)
+	arr[i]=sc.nextInt();
+
+	System.out.println(getMinSum(arr));
+      }
+}
+
+
