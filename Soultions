@@ -58,3 +58,41 @@ return mp;
 } 
 
 *******************
+
+
+3..Fibonacci Iterator
+
+
+import java.util.*;
+class FibonacciIterator implements Iterable<Integer>{
+int num;
+public static void main(String args[]){
+int n=4;
+FibonacciIterator fib=new FibonacciIterator(n);
+for(int v:fib) System.out.print(v+" ");
+}
+public FibonacciIterator(int z){
+num=z;
+}
+public Iterator<Integer> iterator(){
+return new Iterator<>(){
+int c=0;
+public boolean hasNext(){
+return c<num;
+}
+public Integer next(){
+int sum,a=0,b=1;
+if(c==0) sum=a;
+else if(c==1) sum=b;
+else{
+int sum1=a+b;
+a=b;b=sum1;
+sum=sum1;
+}
+c++;
+return sum;
+}
+};
+}
+
+}
